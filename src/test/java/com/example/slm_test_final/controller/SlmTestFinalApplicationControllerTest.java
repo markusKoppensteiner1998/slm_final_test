@@ -33,4 +33,29 @@ class SlmTestFinalApplicationControllerTest {
 
     }
 
+    @Test
+    void getLengthLastWortStandardOutput(){
+        SlmTestFinalApplicationController slmTestFinalApplicationController = new SlmTestFinalApplicationController();
+        assertEquals(slmTestFinalApplicationController.getLengthLastWort(),0);
+    }
+
+    @Test
+    void getLengthLastWortAfterMessageChanged(){
+        SlmTestFinalApplicationController slmTestFinalApplicationController = new SlmTestFinalApplicationController();
+
+        slmTestFinalApplicationController.message("Hello");
+
+        assertEquals(slmTestFinalApplicationController.getLengthLastWort(),5);
+    }
+
+    @Test
+    void getLengthLastWortAfterMessageChangedSeveralTimes(){
+        SlmTestFinalApplicationController slmTestFinalApplicationController = new SlmTestFinalApplicationController();
+
+        slmTestFinalApplicationController.message("Hello");
+        slmTestFinalApplicationController.message("hoffeDieUmsetzungpasst");
+
+        assertEquals(slmTestFinalApplicationController.getLengthLastWort(),22);
+    }
+
 }

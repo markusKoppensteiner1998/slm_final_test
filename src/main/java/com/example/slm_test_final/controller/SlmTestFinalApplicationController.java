@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SlmTestFinalApplicationController {
 
+    int lastWortLength = 0;
+
     @RequestMapping("api/modify")
     public String message(@RequestParam String string){
 
@@ -22,7 +24,13 @@ public class SlmTestFinalApplicationController {
             }
             endeString++;
         }
+        lastWortLength = string.length();
         return returnValue;
+    }
+
+    @RequestMapping("api/modify/length")
+    public int getLengthLastWort(){
+        return lastWortLength;
     }
 
 }
